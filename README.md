@@ -29,4 +29,4 @@ BloomFilter使用例子
   iRet = BloomFilter_Check(&stBloomFilter, &dwValue, sizeof(uint32_t));
 ~~~~~
 
-[murmurhash] https://sites.google.com/site/murmurhash/
+[murmurhash]: https://sites.google.com/site/murmurhash/
