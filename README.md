@@ -1,6 +1,6 @@
 ## BloomFilter_x64实现
 
-仿照Cassandra中的BloomFilter实现，Hash选用MurmurHash2，通过双重散列公式生成散列函数
+仿照Cassandra中的BloomFilter实现，Hash选用[MurmurHash2]，通过双重散列公式生成散列函数[murmurhash]
  * Hash(key, i) = (H1(key) + i * H2(key)) % m
 
 
@@ -12,7 +12,7 @@
 BloomFilter使用例子
 ---------------------------------
 ~~~~~ c
-static BaseBloomFilter stBloomFilter = {0};
+  static BaseBloomFilter stBloomFilter = {0};
 
   // 初始化BloomFilter：
   InitBloomFilter(&stBloomFilter, 0, 100000, 0.00001);
@@ -28,3 +28,5 @@ static BaseBloomFilter stBloomFilter = {0};
   // 检查数值是否在BloomFilter内（0-存在，1-不存在）：
   iRet = BloomFilter_Check(&stBloomFilter, &dwValue, sizeof(uint32_t));
 ~~~~~
+
+[murmurhash] https://sites.google.com/site/murmurhash/
