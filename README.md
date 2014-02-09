@@ -15,7 +15,7 @@ BloomFilter使用例子
 ~~~~~ c
   static BaseBloomFilter stBloomFilter = {0};
 
-  // 初始化BloomFilter：
+  // 初始化BloomFilter(容纳100,000元素，假阳概率不超过万分之一)：
   InitBloomFilter(&stBloomFilter, 0, 100000, 0.00001);
   // 重置BloomFilter：
   ResetBloomFilter(&stBloomFilter);
