@@ -2,7 +2,7 @@
 #define __MICRO_BLOOMFILTER_H__
 
 /**
- *  <BloomFilter_x64实现>
+ *  BloomFilter_x64实现: https://github.com/upbit/bloomfilter
  *
  *  仿照Cassandra中的BloomFilter实现，Hash选用MurmurHash2，通过双重散列公式生成散列函数
  *    Hash(key, i) = (H1(key) + i * H2(key)) % m
@@ -24,7 +24,7 @@
  *  BloomFilter使用例子：
  *  static BaseBloomFilter stBloomFilter = {0};
  *
- *  初始化BloomFilter：
+ *  初始化BloomFilter(最大100000元素，不超过0.00001的错误率)：
  *      InitBloomFilter(&stBloomFilter, 0, 100000, 0.00001);
  *  重置BloomFilter：
  *      ResetBloomFilter(&stBloomFilter);
@@ -37,6 +37,10 @@
  *  检查数值是否在BloomFilter内（0-存在，1-不存在）：
  *      iRet = BloomFilter_Check(&stBloomFilter, &dwValue, sizeof(uint32_t));
  *
+ *  (1.1新增) 将生成好的BloomFilter写入文件:
+ *      iRet = SaveBloomFilterToFile(&stBloomFilter, "dump.bin")
+ *  (1.1新增) 从文件读取生成好的BloomFilter:
+ *      iRet = LoadBloomFilterFromFile(&stBloomFilter, "dump.bin")
 **/
 
 // 注意，要让Add/Check函数内联，必须使用 -O2 或以上的优化等级

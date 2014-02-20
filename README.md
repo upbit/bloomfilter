@@ -7,8 +7,8 @@
 
 版本历史
 ---------------------------------
- * 2012.12    完成初始版本
  * 2013.4.10  增加k/m的动态计算功能，参考：http://hur.st/bloomfilter
+ * 2012.12    完成初始版本
 
 BloomFilter使用例子
 ---------------------------------
@@ -28,6 +28,11 @@ BloomFilter使用例子
 
   // 检查数值是否在BloomFilter内（0-存在，1-不存在）：
   iRet = BloomFilter_Check(&stBloomFilter, &dwValue, sizeof(uint32_t));
+
+  // (1.1新增) 将生成好的BloomFilter写入文件:
+  iRet = SaveBloomFilterToFile(&stBloomFilter, "dump.bin")
+  // (1.1新增) 从文件读取生成好的BloomFilter:
+  iRet = LoadBloomFilterFromFile(&stBloomFilter, "dump.bin")
 ~~~~~
 
 [MurmurHash2]: https://sites.google.com/site/murmurhash/
